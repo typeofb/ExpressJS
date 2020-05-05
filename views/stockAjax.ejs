@@ -1,0 +1,41 @@
+<table border='1'>
+  <tr>
+    <th>chk</th>
+    <th>id</th>
+    <th>category</th>
+    <th>name</th>
+    <th>price</th>
+    <th>cnt</th>
+    <th>img</th>
+  </tr>
+  <% for(var i = 0; i < divResultArea.length; i++) { %>
+  <tr>
+    <td>
+      <% if (divResultArea[i].cnt == 0) { %>
+        <input type='checkbox' disabled />
+      <% } else { %>
+        <input type='checkbox' />
+      <% } %>
+    </td>
+    <td>
+      <%= divResultArea[i].id %>
+    </td>
+    <td>
+      <%= divResultArea[i].category %>
+    </td>
+    <td>
+      <%= divResultArea[i].name %>
+    </td>
+    <td>
+      <%= divResultArea[i].price %>
+    </td>
+    <td>
+      <%= divResultArea[i].cnt %>
+    </td>
+    <td>
+      <img src='/images/<%= divResultArea[i].img %>' height='200px' width='200px'>
+    </td>
+  </tr>
+  <% } %>
+</table>
+<%- include('include/paging') %>

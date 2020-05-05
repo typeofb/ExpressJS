@@ -1,0 +1,29 @@
+<% if (totalCnt > 0) { %>
+<div class='pagingArea'>
+  <% if (currentPageNo == 1) { %>
+    <img src=/images/icon_prev_more.gif alt='Before' border='0' />
+    <img src=/images/icon_prev.gif alt='Before' border='0' />
+  <% } else { %>
+    <a href='javascript:searchWithPage(1);'><img src=/images/icon_prev_more.gif alt='Before' border='0' /></a>
+    <a href='javascript:searchWithPage(<%= currentPageNo %> - 1);'><img src=/images/icon_prev.gif alt='Before'border='0' /></a>
+  <% } %>
+
+  <span class='num'>
+    <% for(var i = 1; i <= totalPage; i++) { %>
+      <% if (i == currentPageNo) { %>
+        <%= i %>
+      <% } else { %>
+        <a href='javascript:searchWithPage(<%= i %>);' class='on'><%= i %></a>
+      <% } %>
+    <% } %>
+  </span>
+
+  <% if (currentPageNo == totalPage) { %>
+    <img src=/images/icon_next.gif alt='Next' border='0' />
+    <img src=/images/icon_next_more.gif alt='Next' border='0' />
+  <% } else { %>
+    <a href='javascript:searchWithPage(<%= currentPageNo %> + 1);'><img src=/images/icon_next.gif alt='Next'border='0' /></a>
+    <a href='javascript:searchWithPage(<%= totalPage %>);'><img src=/images/icon_next_more.gif alt='Next'border='0' /></a>
+  <% } %>
+</div>
+<% } %>

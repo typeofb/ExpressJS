@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script>
+    let categoryCode;
+    let priceCode;
+    let sortbyCode;
+
+    function getParamValue() {
+      var obj1 = document.getElementById('category');
+      for (var i = 0; i < obj1.length; i++) {
+        if (obj1.options[i].selected == true) {
+          categoryCode = obj1.options[i].value;
+        }
+      }
+      var obj2 = document.getElementById('price');
+      for (var i = 0; i < obj2.length; i++) {
+        if (obj2.options[i].selected == true) {
+          priceCode = obj2.options[i].value;
+        }
+      }
+      var obj3 = document.getElementById('sortby');
+      for (var i = 0; i < obj3.length; i++) {
+        if (obj3.options[i].selected == true) {
+          sortbyCode = obj3.options[i].value;
+        }
+      }
+    }
+
+    function searchWithPage(targetPage) {
+      getParamValue();
+      var xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === xhr.DONE) {
+          if (xhr.status === 200 || xhr.status === 201) {
+            document.getElementById('divResultArea').innerHTML = xhr.responseText;
+          } else {
+            console.error(xhr.responseText);
+          }
+        }
+      }
+      xhr.open('GET', '/stockAjax?' + 'categoryCode=' + categoryCode + '&priceCode=' + priceCode + '&sortbyCode=' + sortbyCode + '&targetPage=' + targetPage, true);
+      xhr.send();
+    }
+
+    window.onload = function() {
+      searchWithPage(1);
+    }
+  </script>
+</head>
+
+<body>
+  <span>category:</span>
+  <select id='category'>
+    <option value='category'>all</option>
+    <option value='"fashion"'>fashion</option>
+    <option value='"fruit"'>fruit</option>
+    <option value='"meat"'>meat</option>
+    <option value='"beauty"'>beauty</option>
+  </select>
+  &nbsp;
+  <span>price:</span>
+  <select id='price'>
+    <option value='BETWEEN 0 AND 99999'>all</option>
+    <option value='BETWEEN 0 AND 1000'>Under 1000</option>
+    <option value='BETWEEN 999 AND 2001'>1000 to 2000</option>
+    <option value='BETWEEN 1999 AND 10001'>2000 to 10000</option>
+    <option value='BETWEEN 19999 AND 99999'>Over 20000</option>
+  </select>
+  &nbsp;
+  <span>sort by price:</span>
+  <select id='sortby'>
+    <option value='ASC'>none</option>
+    <option value='ASC'>asc</option>
+    <option value='DESC'>desc</option>
+  </select>
+  <button type='button' onclick='searchWithPage(1)'>search</button>
+  <div id='divResultArea'></div>
+</body>
+
+<footer>
+</footer>
+
+</html>
