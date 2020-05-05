@@ -27,7 +27,7 @@
     "username": "root",
     "password": "1234",
     "database": "prac_dev",
-    "host": "127.0.0.1",
+    "host": "114.203.202.128",
     "dialect": "mysql",
     "define": {
       "freezeTableName": true,
