@@ -5,6 +5,7 @@
     "database": "prac_dev",
     "host": "114.203.202.128",
     "dialect": "mysql",
+    "timezone": "+09:00",
     "define": {
       "freezeTableName": true,
       "timestamps": true,
@@ -17,6 +18,7 @@
     "database": "prac_dev",
     "host": "127.0.0.1",
     "dialect": "mysql",
+    "timezone": "+09:00",
     "define": {
       "freezeTableName": true,
       "timestamps": true,
@@ -29,6 +31,7 @@
     "database": "prac_dev",
     "host": "114.203.202.128",
     "dialect": "mysql",
+    "timezone": "+09:00",
     "define": {
       "freezeTableName": true,
       "timestamps": true,
